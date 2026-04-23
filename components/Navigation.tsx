@@ -26,7 +26,7 @@ export function Navigation() {
   }
 
   return (
-    <nav className="fixed top-3 left-3 right-3 z-50 overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 shadow-[0_22px_65px_rgba(15,23,42,0.14)] backdrop-blur-2xl md:left-6 md:right-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 overflow-hidden rounded-b-[2rem] border-x-0 border-t-0 border border-white/60 bg-white/80 shadow-[0_22px_65px_rgba(15,23,42,0.14)] backdrop-blur-2xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-300/70 to-transparent" />
       <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 py-3.5 sm:px-6 lg:px-8">
         {/* Logo */}

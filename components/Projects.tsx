@@ -43,7 +43,7 @@ export function Projects() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-y-6 gap-x-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10">
           {projects.map((project, index) => (
             <div
               key={index}

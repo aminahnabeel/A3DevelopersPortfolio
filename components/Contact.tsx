@@ -1,8 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Mail, MessageSquare, Phone } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+
+const EMAILJS_PUBLIC_KEY =
+  process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'PIAQ_ZonvFvFQF0v1'
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +17,12 @@ export function Contact() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+
+  useEffect(() => {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY })
+  }, [])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -19,12 +31,42 @@ export function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setSubmitError('')
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+      setSubmitError('Email service is not configured yet. Please contact site admin.')
+      return
+    }
+
     if (formData.name && formData.email && formData.message) {
-      setSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setSubmitted(false), 5000)
+      setIsSubmitting(true)
+
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            name: formData.name,
+            email: formData.email,
+            from_name: formData.name,
+            from_email: formData.email,
+            reply_to: formData.email,
+            to_email: 'a3developerss@gmail.com',
+            message: formData.message,
+          },
+          { publicKey: EMAILJS_PUBLIC_KEY }
+        )
+
+        setSubmitted(true)
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setSubmitted(false), 5000)
+      } catch {
+        setSubmitError('Failed to send message. Please try again.')
+      } finally {
+        setIsSubmitting(false)
+      }
     }
   }
 
@@ -99,14 +141,21 @@ export function Contact() {
               <Button
                 type="submit"
                 size="lg"
+                disabled={isSubmitting}
                 className="w-full rounded-full bg-slate-950 text-white shadow-lg shadow-slate-950/20 transition-all hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
 
               {submitted && (
                 <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 font-medium text-emerald-900">
                   Thank you! We&apos;ll get back to you soon.
+                </div>
+              )}
+
+              {submitError && (
+                <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 font-medium text-red-900">
+                  {submitError}
                 </div>
               )}
             </form>
@@ -132,10 +181,10 @@ export function Contact() {
                 <div>
                   <h4 className="mb-2 font-semibold text-slate-950">Email</h4>
                   <a
-                    href="mailto:hello@a3developers.com"
+                    href="mailto:a3developerss@gmail.com"
                     className="font-medium text-slate-600 transition-colors hover:text-slate-950"
                   >
-                    hello@a3developers.com
+                    a3developerss@gmail.com
                   </a>
                 </div>
               </div>
@@ -150,12 +199,12 @@ export function Contact() {
                 <div>
                   <h4 className="mb-2 font-semibold text-slate-950">WhatsApp</h4>
                   <a
-                    href="https://wa.me/923001234567"
+                    href="https://wa.me/923327015787"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium text-slate-600 transition-colors hover:text-slate-950"
                   >
-                    +92 300 123 4567
+                    +92 332 701 5787
                   </a>
                 </div>
               </div>
@@ -170,10 +219,10 @@ export function Contact() {
                 <div>
                   <h4 className="mb-2 font-semibold text-slate-950">Phone</h4>
                   <a
-                    href="tel:+923001234567"
+                    href="tel:+923327015787"
                     className="font-medium text-slate-600 transition-colors hover:text-slate-950"
                   >
-                    +92 300 123 4567
+                    +92 332 701 5787
                   </a>
                 </div>
               </div>
