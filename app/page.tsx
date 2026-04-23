@@ -1,5 +1,6 @@
 import { Navigation } from '@/components/Navigation'
 import { Hero } from '@/components/Hero'
+import { FeatureMarquee } from '@/components/FeatureMarquee'
 import { Services } from '@/components/Services'
 import { Projects } from '@/components/Projects'
 import { WhyChooseUs } from '@/components/WhyChooseUs'
@@ -15,6 +16,7 @@ export default function Home() {
       <Navigation />
       <div className="pt-20">
         <Hero />
+        <FeatureMarquee />
         <Services />
         <Projects />
         <WhyChooseUs />

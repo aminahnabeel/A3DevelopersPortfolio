@@ -141,3 +141,22 @@
     color: oklch(0.18 0.03 258);
   }
 }
+
+@keyframes feature-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.feature-marquee-track {
+  animation: feature-marquee-scroll 21s linear infinite;
+  will-change: transform;
+}
+
+.feature-marquee:hover .feature-marquee-track {
+  animation-play-state: paused;
+}
