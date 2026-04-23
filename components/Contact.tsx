@@ -71,7 +71,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="px-4 py-24 sm:py-28">
+    <section id="contact" className="px-4 pb-24 pt-16 sm:pb-28 sm:pt-20">
       <div className="mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="mb-16 space-y-4 text-center">

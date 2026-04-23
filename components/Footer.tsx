@@ -1,20 +1,14 @@
-import { Github, Linkedin, Twitter, MessageSquare } from 'lucide-react'
+import { Github, Instagram, Linkedin, Youtube, Facebook } from 'lucide-react'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
-  ]
-
   const socialLinks = [
     { icon: Github, href: 'https://github.com', label: 'GitHub' },
+    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
     { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: MessageSquare, href: 'https://wa.me/923001234567', label: 'WhatsApp' },
+    { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
+    { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
   ]
 
   return (
@@ -24,7 +18,7 @@ export function Footer() {
       <div className="absolute right-0 top-0 -z-10 h-96 w-96 rounded-full bg-emerald-300/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="mb-12 grid gap-12 md:grid-cols-3">
+        <div className="mb-12 grid gap-12 md:grid-cols-2">
           {/* Brand */}
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2">
@@ -40,24 +34,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Navigation Links */}
-          <div>
-            <h4 className="mb-6 font-semibold text-slate-950">Quick Links</h4>
-            <nav className="space-y-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="block font-medium text-slate-600 transition-colors hover:text-slate-950"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
           {/* Social Links */}
-          <div>
+          <div className="md:pl-20 lg:pl-24">
             <h4 className="mb-6 font-semibold text-slate-950">Connect With Us</h4>
             <div className="flex gap-4">
               {socialLinks.map((social) => {
@@ -81,18 +59,10 @@ export function Footer() {
 
         {/* Divider */}
         <div className="border-t border-slate-200 pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 text-sm text-slate-600 sm:flex-row">
+          <div className="flex items-center justify-center text-sm text-slate-600">
             <p>
               &copy; {currentYear} A3 Developers. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <a href="#" className="font-medium transition-colors hover:text-slate-950">
-                Privacy Policy
-              </a>
-              <a href="#" className="font-medium transition-colors hover:text-slate-950">
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </div>
