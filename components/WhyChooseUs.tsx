@@ -91,13 +91,23 @@ export function WhyChooseUs() {
             </div>
 
             <div className="relative flex h-full min-h-[260px] items-center justify-center p-4 sm:p-5">
-              <Image
-                src={projectPreview}
-                alt="Project collaboration preview"
-                className="h-auto w-full max-w-md rounded-3xl object-cover shadow-[0_20px_60px_rgba(15,23,42,0.12)] translate-x-2 sm:max-w-lg sm:translate-x-4"
-                sizes="(max-width: 1024px) 100vw, 560px"
-                priority
-              />
+              <div className="relative">
+                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-cyan-50/80 via-white/40 to-sky-50/60 ring-1 ring-slate-200/40" />
+
+                <div className="absolute -right-6 -bottom-6 w-56 h-40 rounded-2xl bg-gradient-to-br from-slate-900/6 to-cyan-500/6 transform -rotate-6 shadow-[0_40px_90px_rgba(2,6,23,0.18)] blur-3xl" />
+
+                <div className="absolute -right-4 -bottom-4 w-56 h-40 rounded-2xl bg-white/6 transform -rotate-6 shadow-[0_22px_60px_rgba(2,6,23,0.12)]" />
+
+                <div className="relative z-10 overflow-hidden rounded-3xl ring-1 ring-slate-200/60">
+                  <Image
+                    src={projectPreview}
+                    alt="Project collaboration preview"
+                    className="h-auto w-full max-w-xl object-cover rounded-3xl"
+                    sizes="(max-width: 1400px) 100vw, 900px"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
         </div>
       </div>

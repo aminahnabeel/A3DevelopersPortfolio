@@ -1,16 +1,10 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { Sparkles } from 'lucide-react'
 import heroPreview from '../img.png'
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    element?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <section id="home" className="relative overflow-hidden px-4 pb-20 pt-6 sm:pt-10 lg:flex lg:min-h-screen lg:items-center lg:px-6">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_80%_20%,rgba(45,212,191,0.14),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.72))]" />
@@ -34,23 +28,6 @@ export function Hero() {
             <p className="max-w-2xl text-lg leading-8 text-slate-600 text-balance sm:text-xl">
               We design and build polished web applications, mobile apps, and AI-driven systems that feel premium, ship fast, and stay practical for real budgets.
             </p>
-          </div>
-
-          <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-            <Button
-              size="lg"
-              className="rounded-full bg-slate-950 px-8 text-white shadow-lg shadow-slate-950/20 transition-all hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl"
-              onClick={() => scrollToSection('projects')}
-            >
-              View Our Projects
-            </Button>
-            <Button
-              size="lg"
-              className="rounded-full border border-slate-200 bg-white/80 px-8 text-slate-950 shadow-sm transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-lg"
-              onClick={() => scrollToSection('contact')}
-            >
-              Get Started Today
-            </Button>
           </div>
 
         </div>
